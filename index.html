@@ -182,36 +182,44 @@
   </div>
 </div>
 <script>
+
+<script>
 function tick() {
-  var d = new Date();
-  var p = function(n) {
-    return String(n).padStart(2, '0');
-  };
+  const ahora = new Date();
 
-  document.getElementById('clock').textContent =
-    p(d.getHours()) + ':' +
-    p(d.getMinutes()) + ':' +
-    p(d.getSeconds());
+  const dosDigitos = (n) => String(n).padStart(2, '0');
 
-  var dias = [
-  'Domingo', 'Lunes', 'Martes', 'Miércoles',
-  'Jueves', 'Viernes', 'Sábado'
-];
+  const reloj = document.getElementById('clock');
+  const fecha = document.getElementById('date');
 
-var meses = [
-  'Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun',
-  'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'
-];
+  if (!reloj || !fecha) return;
 
-  document.getElementById('date').textContent =
-    dias[d.getDay()] + ', ' +
-    p(d.getDate()) + ' ' +
-    meses[d.getMonth()] + ' ' +
-    d.getFullYear();
+  reloj.textContent =
+    dosDigitos(ahora.getHours()) + ':' +
+    dosDigitos(ahora.getMinutes()) + ':' +
+    dosDigitos(ahora.getSeconds());
+
+  const dias = [
+    'Domingo', 'Lunes', 'Martes', 'Miércoles',
+    'Jueves', 'Viernes', 'Sábado'
+  ];
+
+  const meses = [
+    'Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun',
+    'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'
+  ];
+
+  fecha.textContent =
+    dias[ahora.getDay()] + ', ' +
+    dosDigitos(ahora.getDate()) + ' ' +
+    meses[ahora.getMonth()] + ' ' +
+    ahora.getFullYear();
 }
 
 tick();
 setInterval(tick, 1000);
+</script>
+
 </script>
 </body>
 </html>
