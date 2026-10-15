@@ -48,7 +48,7 @@
 .date {
   color: var(--muted);
   font-size: 18px;
-  text-transform: none;
+  text-transform: none !important;
   margin-top: 10px;
   letter-spacing: 0.3px;
 }
@@ -203,11 +203,12 @@ var meses = [
   'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'
 ];
 
-document.getElementById('date').textContent =
-  dias[d.getDay()] + ', ' +
-  p(d.getDate()) + ' ' +
-  meses[d.getMonth()] + ' ' +
-  d.getFullYear();
+  document.getElementById('date').textContent =
+    dias[d.getDay()] + ', ' +
+    p(d.getDate()) + ' ' +
+    meses[d.getMonth()] + ' ' +
+    d.getFullYear();
+}
 
 tick();
 setInterval(tick, 1000);
