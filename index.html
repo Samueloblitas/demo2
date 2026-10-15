@@ -44,7 +44,14 @@
   font-weight: 400;
   font-variant-numeric: tabular-nums;
 }
-  .date{color:var(--muted);font-size:13px;text-transform:capitalize}
+
+.date {
+  color: var(--muted);
+  font-size: 16px;
+  text-transform: uppercase;
+  margin-top: 5px;
+  letter-spacing: 0.3px;
+}
 .photo {
   position: relative;
   z-index: 2;
@@ -153,7 +160,9 @@
 
   <div class="scene">
     <svg viewBox="0 0 400 150" preserveAspectRatio="none">
-<g fill="var(--cloud)" style="animation: moverNubes 12s ease-in-out infinite alternate;">
+
+<g fill="var(--cloud)" style="animation: moverNubes 30s ease-in-out infinite alternate;">
+
 
         <path d="M30 40h40a10 10 0 0 0 0-20 14 14 0 0 0-26-3 11 11 0 0 0-14 23z"/>
         <path d="M290 36h56a12 12 0 0 0 0-24 18 18 0 0 0-34-4 14 14 0 0 0-22 28z"/>
@@ -176,7 +185,22 @@
   function tick(){
     var d=new Date(),p=function(n){return String(n).padStart(2,'0')};
     document.getElementById('clock').textContent=p(d.getHours())+':'+p(d.getMinutes())+':'+p(d.getSeconds());
-    document.getElementById('date').textContent=d.toLocaleDateString('es-PE',{weekday:'long',day:'numeric',month:'short',year:'numeric'}).replace(/\./g,'');
+    var dia = d.toLocaleDateString('es-PE', {
+  weekday: 'long'
+});
+
+var fecha = d.toLocaleDateString('es-PE', {
+  day: '2-digit'
+});
+
+var mes = d.toLocaleDateString('en-US', {
+  month: 'short'
+}).toUpperCase();
+
+var anio = d.getFullYear();
+
+document.getElementById('date').textContent =
+  dia + ', ' + fecha + ' ' + mes + ' ' + anio;
   }
   tick();setInterval(tick,1000);
 </script>
