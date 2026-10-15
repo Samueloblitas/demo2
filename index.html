@@ -219,7 +219,12 @@ function tick() {
   const ahora = new Date();
   const dosDigitos = n => String(n).padStart(2, '0');
 
-  document.getElementById('clock').textContent =
+  const reloj = document.getElementById('clock');
+  const fecha = document.getElementById('date');
+
+  if (!reloj || !fecha) return;
+
+  reloj.textContent =
     dosDigitos(ahora.getHours()) + ':' +
     dosDigitos(ahora.getMinutes()) + ':' +
     dosDigitos(ahora.getSeconds());
@@ -234,7 +239,7 @@ function tick() {
     'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'
   ];
 
-  document.getElementById('date').textContent =
+  fecha.textContent =
     dias[ahora.getDay()] + ', ' +
     dosDigitos(ahora.getDate()) + ' ' +
     meses[ahora.getMonth()] + ' ' +
