@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  :root{
+    box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+    --bg:#ffffff;--bg2:#ffffff;--pill:#dcd9f8;--ink:#0f0f1e;--muted:#4f5870;--red:#f0404f;--navy:#3a4a68;--cloud:#d6d3f3;--card:#fff;--shadow:rgba(40,40,100,.08);--tab:#8b8b90;--ill:#e4e2f8;
+  }
+  @media (prefers-color-scheme: dark){
+   :root {
+  color-scheme: light;
+  --bg: #ffffff;
+  --bg2: #ffffff;
+  --pill: #dcd9f8;
+  --ink: #0f0f1e;
+  --muted: #4f5870;
+  --red: #f0404f;
+  --navy: #3a4a68;
+  --cloud: #d6d3f3;
+  --card: #ffffff;
+  --shadow: rgba(40,40,100,.08);
+  --tab: #8b8b90;
+  --ill: #e4e2f8;
+}
+  :root[data-theme="dark"]{--bg:#14142b;--bg2:#1b1b3a;--pill:#34336b;--ink:#f1f0ff;--muted:#a9adc4;--red:#ff5c69;--navy:#c7cde0;--cloud:#2c2b5a;--card:#222246;--shadow:rgba(0,0,0,.4);--ill:#26264f}
+  html{scroll-padding-top:env(safe-area-inset-top,0px);height:100%}
+  body{margin:0;min-height:100%;background:linear-gradient(180deg,var(--bg2),var(--bg));color:var(--navy);font-family:system-ui,sans-serif;position:relative;overflow-x:hidden}
+  .app{max-width:420px;margin:0 auto;min-height:100vh;position:relative;padding:14px 16px 24px;display:flex;flex-direction:column;align-items:center}
+  .top{width:100%;display:flex;align-items:center;gap:14px}
+  .back{width:34px;height:34px;border-radius:50%;background:#fff;display:grid;place-items:center;box-shadow:0 1px 4px var(--shadow)}
+  .title{font-family:'Bebas Neue','Barlow Condensed',Impact,sans-serif;font-size:22px;letter-spacing:.5px;color:var(--ink)}
+  .tab{position:absolute;right:0;top:140px;width:18px;height:70px;background:var(--tab);border-radius:10px 0 0 10px;display:grid;place-items:center;color:#fff;font-size:14px}
+  .demo{margin-top:18px;background:var(--red);color:#fff;font-weight:700;font-size:12px;padding:4px 12px;border-radius:99px}
+  .clock{margin:26px 0 8px;background:var(--pill);color:var(--ink);border-radius:14px;padding:10px 26px;font-size:36px;font-weight:400;font-variant-numeric:tabular-nums}
+  .date{color:var(--muted);font-size:13px;text-transform:capitalize}
+.photo {
+  position: relative;
+  z-index: 2;
+  width: 112px;
+  height: 112px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #fff;
+  margin: 44px 0 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.scene {
+  position: relative;
+  width: calc(100% + 32px);
+  margin: -40px -16px 0;
+  height: 150px;
+  flex-shrink: 0;
+  z-index: 0;
+}
+
+.scene svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.card {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: -70px;
+  background: var(--card);
+  border-radius: 12px;
+  padding: 20px 14px 18px;
+  text-align: center;
+  box-shadow: 0 4px 18px var(--shadow);
+}
+  .name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 38px;
+  font-weight: 400;
+  line-height: 1.1;
+  color: #f0404f;
+  margin: 0 0 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+  .lbl{font-size:13px;color:var(--ink);margin-top:6px}
+  .val{font-family:'Barlow Condensed',system-ui,sans-serif;font-size:17px;font-weight:700;color:var(--navy);letter-spacing:.5px}
+  .career{margin:18px 0 8px;font-family:'Barlow Condensed',system-ui,sans-serif;font-size:17px;font-weight:700;color:var(--navy);text-transform:uppercase}
+  .campus{font-size:13px;color:var(--ink)}
+  .campus i{color:var(--red);font-style:normal}
+  .foot{margin-top:14px;font-size:11px;color:var(--muted)}
+    .photo {
+  position: relative;
+  z-index: 2;
+  width: 112px;
+  height: 112px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #fff;
+  margin: 70px 0 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="top">
+    <div class="back"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M15 4l-8 8 8 8" fill="none" stroke="#e03040" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <div class="title">TIU VIRTUAL</div>
+  </div>
+
+
+  <div class="clock" id="clock">00:00:00</div>
+  <div class="date" id="date"></div>
+
+<div class="photo">
+  <img src="FOTO.JPEG" alt="Foto de perfil">
+</div>
+
+  <div class="scene">
+    <svg viewBox="0 0 400 150" preserveAspectRatio="none">
+      <g fill="var(--cloud)">
+        <path d="M30 40h40a10 10 0 0 0 0-20 14 14 0 0 0-26-3 11 11 0 0 0-14 23z"/>
+        <path d="M290 36h56a12 12 0 0 0 0-24 18 18 0 0 0-34-4 14 14 0 0 0-22 28z"/>
+        <path d="M110 120h24a7 7 0 0 0 0-14 9 9 0 0 0-17-2 7 7 0 0 0-7 16z"/>
+        <path d="M250 124h40a8 8 0 0 0 0-16 11 11 0 0 0-21-2 8 8 0 0 0-19 18z"/>
+      </g>
+      <path d="M0 150V95q40-30 90-10 30-25 70-5h90q40-20 80 6 40-5 70 14v50z" fill="var(--ill)"/>
+    </svg>
+  </div>
+
+  <div class="card">
+    <p class="name">Greace Rosa S*** S***</p>
+    <div class="lbl">Código de alumno:</div><div class="val">U202343212</div>
+    <div class="lbl" style="margin-top:12px">ID Banner:</div><div class="val">N04432123</div>
+    <div class="career">Ing. Industrial</div>
+    <div class="campus"><i>📍</i> Campus Monterrico</div>
+  </div>
+</div>
+<script>
+  function tick(){
+    var d=new Date(),p=function(n){return String(n).padStart(2,'0')};
+    document.getElementById('clock').textContent=p(d.getHours())+':'+p(d.getMinutes())+':'+p(d.getSeconds());
+    document.getElementById('date').textContent=d.toLocaleDateString('es-PE',{weekday:'long',day:'numeric',month:'short',year:'numeric'}).replace(/\./g,'');
+  }
+  tick();setInterval(tick,1000);
+</script>
+</body>
+</html>
